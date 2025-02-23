@@ -12,14 +12,16 @@ import os
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") 
-OPENAI_DEPLOYMENT_ENDPOINT = os.getenv("OPENAI_DEPLOYMENT_ENDPOINT")
-OPENAI_GPT35_DEPLOYMENT_NAME = os.getenv("OPENAI_GPT35_DEPLOYMENT_NAME")
+AZURE_OPENAI_ENDPOINT=os.getenv("AIFOUNDRY_AI_SERVICES_EASTUS2_ENDPOINT")
+AZURE_OPENAI_GPT4o_DEPLOYMENT=os.getenv("AIFOUNDRY_OPENAI_GPT4o_DEPLOYMENT")
+AZURE_OPENAI_API_VERSION=os.getenv("AIFOUNDRY_OPENAI_API_VERSION")
+AZURE_OPENAI_API_KEY=os.getenv("AIFOUNDRY_AI_SERVICES_EASTUS2_KEY")
+
 
 client = AzureOpenAI(
-  azure_endpoint = OPENAI_DEPLOYMENT_ENDPOINT, 
-  api_key=OPENAI_API_KEY,  
-  api_version="2023-05-15"
+  azure_endpoint = AZURE_OPENAI_ENDPOINT, 
+  api_key=AZURE_OPENAI_API_KEY,  
+  api_version=AZURE_OPENAI_API_VERSION
 )
 
 SPEECH_KEY = os.getenv("SPEECH_KEY")
@@ -93,7 +95,7 @@ Here's an example of your output format:
         {"role":"system","content":system_message},
         {"role":"user","content":text}]
     response = client.chat.completions.create(
-        model=OPENAI_GPT35_DEPLOYMENT_NAME,
+        model=AZURE_OPENAI_GPT4o_DEPLOYMENT,
         messages = message_text,
         temperature=0.7,
         max_tokens=800,
@@ -105,7 +107,8 @@ Here's an example of your output format:
 
     return response.choices[0].message.content
 
-#I would like to order two hamburgers with French fries, tomato, lettuce and mayonnaise and two large cokes and two ice creams
+# Run this example and say out loud the following to your microphone:
+# I would like to order two hamburgers with French fries, tomato, lettuce and mayonnaise and two large cokes and two ice creams
 if __name__ == "__main__":
     text = voice_to_text()
     response = call_openAI(text)
