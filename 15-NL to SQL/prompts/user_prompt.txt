@@ -1,6 +1,6 @@
 ${schema_prompt}
 Below is a question input from a user.
-Generate a SQL query that pulls the necessary data to answer the question.
+Generate an SQL query that pulls the necessary data to answer the question.
 Question: ${question}
 Return your answer ONLY in JSON format as follows:
 {
