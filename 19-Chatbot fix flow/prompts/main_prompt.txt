@@ -4,7 +4,7 @@ Question subjects can be one of the following ONLY:
 ${questions}
 
 If the user question does not match any of the options, you will respond with:
-{question_language:<language>,question_subject:option99}
+{question_language:<language>,question_subject:option99, probability: <probability>}
 
 Here is an example of your output format:
 user question: "¿Dónde está mi paquete?"
@@ -18,6 +18,7 @@ assistant output:
 Return your answer ONLY in JSON format as follows:
 {
     'question_language': '<language>',
-    'question_subject': '<one of the options>'
+    'question_subject': '<one of the options>',
+    'probability':'<the probability 0-100 that the user question is the option detected'
 }
 
