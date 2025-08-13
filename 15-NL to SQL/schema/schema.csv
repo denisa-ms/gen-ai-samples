@@ -1,0 +1,41 @@
+table_name,table_schema
+Authors,"
+-- The Authors table stores information about authors
+-- Each author has a unique ID, a name, and an optional biography
+-- The ID is an auto-incrementing integer
+-- The name is a required text field
+-- The biography is an optional text field
+-- The table is created with the following SQL statement
+        CREATE TABLE Authors (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            biography TEXT
+        )
+"
+Publishers,"
+-- The Publishers table stores information about publishers
+-- Each publisher has a unique ID, a name, and an optional address
+-- The ID is an auto-incrementing integer
+-- The name is a required text field
+-- The address is an optional text field
+-- The table is created with the following SQL statement
+        CREATE TABLE Publishers (
+            d INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            address TEXT
+        )
+"
+Books,"
+-- The Books table stores information about books
+-- Each book has a unique ID, a title, a price, and an author ID
+-- The ID is an auto-incrementing integer
+-- The title is a required text field
+-- The price is a real number (optional)
+-- The author ID is a foreign key referencing the Authors table
+-- The table is created with the following SQL statement
+        CREATE TABLE Books (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            price REAL,
+            author_id INTEGER NOT NULL, FOREIGN KEY (author_id) REFERENCES Authors(id)
+        )"
