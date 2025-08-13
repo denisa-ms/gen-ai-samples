@@ -43,3 +43,8 @@ Let's start by deploying a model in an Azure AI Foundry project.
     ![Screenshot of a Azure AI Foundry project overview page.](./Media/ai-foundry-project.png)
 
 1. Copy the **Azure AI Foundry project endpoint** value to a notepad, as you'll use it to connect to your project in a client application.
+
+Make sure you fill the .env file with the values for environment variables as follows:   
+
+AIFOUNDRY_AGENT_PROJECT_NAME="ai foundry project endpoint"   
+AIFOUNDRY_AGENT_MODEL_DEPLOYMENT_NAME = "gpt4-o"  
